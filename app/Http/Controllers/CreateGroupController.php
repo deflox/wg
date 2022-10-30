@@ -9,11 +9,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class GroupController extends Controller
+class CreateGroupController extends Controller
 {
     public function create() : View
     {
-        return view('create');
+        return view('create-or-open.create-group');
     }
 
     public function store(CreateGroupRequest $request) : RedirectResponse
@@ -36,6 +36,6 @@ class GroupController extends Controller
             'group_token' => $group->token,
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('payments');
     }
 }

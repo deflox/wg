@@ -1,6 +1,10 @@
 <div class="my-3">
     <label for="{{ $name }}" class="block mb-1">{{ $label }}</label>
-    <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" value="{{ $inputValue }}" class="
+    <input type="{{ $type }}"
+           name="{{ $name }}"
+           id="{{ $name }}"
+           value="{{ $inputValue }}"
+           @if($attributes->has('placeholder'))placeholder="{{ $attributes->get('placeholder') }}" @endif class="
             block
             p-2.5
             border

@@ -5,7 +5,7 @@
         <h1 class="text-3xl">Bestehende WG öffnen</h1>
         <x-alerts/>
         <p class="py-3">Bitte gib das Zugriffstoken deiner WG ein, um diese zu öffnen.</p>
-        <form method="post" action="{{ route('open-group') }}">
+        <form method="post" action="{{ route('open.group') }}">
             @csrf
             <x-input type="text" name="token" label="WG Token:"/>
             <x-submit-button value="Weiter"/>

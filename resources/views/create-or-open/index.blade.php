@@ -4,7 +4,7 @@
     <div class="bg-gray-800 px-5 py-20 max-w-md mx-auto mt-20 rounded-md shadow-md border border-gray-700 text-slate-200">
         <h1 class="text-3xl text-center mb-5">WG Finance WebApp</h1>
         <div class="max-w-xs mx-auto">
-            <a href="{{ route('create-group') }}">
+            <a href="{{ route('create.group') }}">
                 <button class="
                 bg-blue-600
                 w-full
@@ -21,7 +21,7 @@
                 duration-150
                 ease-in-out">Neue WG erstellen</button>
             </a>
-            <a href="{{ route('open-group') }}">
+            <a href="{{ route('open.group') }}">
                 <button class="
                 bg-blue-600
                 w-full

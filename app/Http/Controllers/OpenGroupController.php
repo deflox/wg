@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class AccessController extends Controller
+class OpenGroupController extends Controller
 {
     private WgSessionService $wgSessionService;
 
@@ -20,7 +20,7 @@ class AccessController extends Controller
 
     public function open() : View
     {
-        return view('open-group');
+        return view('create-or-open.open-group');
     }
 
     public function submitToken(Request $request) : RedirectResponse
@@ -29,7 +29,7 @@ class AccessController extends Controller
             'token' => 'required',
         ]);
 
-        return redirect()->route('verify-token', ['token' => $request->get('token')]);
+        return redirect()->route('verify.token', ['token' => $request->get('token')]);
     }
 
     public function verifyToken(Request $request, string $token) : RedirectResponse | View
@@ -41,7 +41,7 @@ class AccessController extends Controller
             return redirect()->route('open-group');
         }
 
-        return view('select-user', [
+        return view('create-or-open.select-user', [
             'users' => $group->users()->get()->pluck('name', 'id')->toArray(),
             'token' => $token,
         ]);
@@ -52,6 +52,6 @@ class AccessController extends Controller
         $group = Group::where('token', $token)->first();
 
         $this->wgSessionService->create($group->id, $group->token, $request->get('user'));
-        return redirect()->route('index');
+        return redirect()->route('payments');
     }
 }
